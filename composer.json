@@ -1,0 +1,19 @@
+{
+    "name": "atl/atl-framework",
+    "description": "The Atl Framework.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Le Trung Ha",
+            "email": "letrungha.192@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atl\\": "src/atl/"
+        }
+    }
+}
