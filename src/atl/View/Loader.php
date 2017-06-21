@@ -103,7 +103,7 @@ class Loader
 		}
 
 		if( $this->registerScrips ) {
-			foreach (self::$registerScrips as $key => $value) {
+			foreach ($this->registerScrips as $key => $value) {
 				$out .= '<script id=' . $key . ' src="' . $value . '"></script>' . PHP_EOL;
 			}
 		}
@@ -134,7 +134,7 @@ class Loader
 			$out .= '<link id=' . $key . ' href="' . $value . '" rel="stylesheet">'  . PHP_EOL;
 		}
 		if( $this->registerStyle ) {
-			foreach (self::$registerStyle as $key => $value) {
+			foreach ($this->registerStyle as $key => $value) {
 				$out .= '<link id=' . $key . ' rel="stylesheet" type="text/css" href="' . $value . '">' . PHP_EOL;
 			}
 		}

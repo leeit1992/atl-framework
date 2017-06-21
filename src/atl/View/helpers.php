@@ -16,7 +16,7 @@ if (! function_exists('View')) {
 	 */
     function View($view, $vars = array(), $return = FALSE)
     {
-        return Loader::getInstance()->view($view, $vars = array(), $return = FALSE);
+        return Loader::getInstance()->view($view, $vars, $return = FALSE);
     }
 }
 
@@ -34,4 +34,46 @@ if (! function_exists('enqueueScripts')) {
     }
 }
 
+if (! function_exists('enqueueStyle')) {
+	/**
+	 * enqueue_style
+	 * Load style file.
+	 * 
+	 * @param  array $args  List data style file.
+	 * @return string
+	 */
+    function enqueueStyle($args)
+    {
+        return Loader::getInstance()->enqueueStyle($args);
+    }
+}
+
+
+if (! function_exists('registerStyle')) {
+	/**
+	 * registerStyle
+	 * Register style before system load style.
+	 * 
+	 * @param  array $args  List style register
+	 * @return void
+	 */
+    function registerStyle($args)
+    {
+        return Loader::getInstance()->registerStyle($args);
+    }
+}
+
+if (! function_exists('registerScrips')) {
+	/**
+	 * registerScrips
+	 * Register script before system load script.
+	 * 
+	 * @param  array $args  List script register
+	 * @return void
+	 */
+    function registerScrips($args)
+    {
+        return Loader::getInstance()->registerScrips($args);
+    }
+}
 

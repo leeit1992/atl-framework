@@ -4,7 +4,6 @@ namespace Atl\Container;
 
 use Pimple\Container as Pimple_Container;
 
-
 class Container extends Pimple_Container
 {	
 
