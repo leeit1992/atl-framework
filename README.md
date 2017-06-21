@@ -47,6 +47,21 @@ DB()->insert("account", [
 	"user_name" => "foo",
 	"email"     => "foo@bar.com"
 ]);
+
+DB()->update("account", [
+	"user_name" => "foo",
+	"email"     => "foo@bar.com"
+],[
+	"id" => 1
+]);
+
+DB()->select("account", [
+	"user_name",
+	"email"
+], [
+	"user_id[>]" => 100
+]);
+
 ```
 
 [Router](https://symfony.com/doc/current/routing.html).

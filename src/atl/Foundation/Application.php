@@ -187,6 +187,10 @@ class Application extends Container
         return $this->storagePath ?: $this->basePath.DIRECTORY_SEPARATOR.'resources';
     }
 
+    /**
+     * Load config data.
+     * @return array
+     */
     public function configFile(){
         return require $this->configPath() . '/app.php';
     }
