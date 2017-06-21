@@ -1,8 +1,8 @@
 <?php 
 namespace Atl\Database;
 
-use Atl\Database\Database;
-use test;
+use Medoo\Medoo;
+
 class DB
 {	
 	private static $getInstance;
@@ -16,10 +16,12 @@ class DB
     }
 
 	private function __construct(){
-
-		$this->connect = new Database();
-		test();
+		$this->connect = new Medoo($this->pathConfig());
 	}
 
+	public function pathConfig(){
+		global $app;
+		return require_once $app->configPath() . '/database.php';
+	}
 
 }

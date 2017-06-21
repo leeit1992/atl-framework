@@ -85,9 +85,11 @@ class Application extends Container
         $this->instance('path.lang', $this->langPath());
         $this->instance('path.config', $this->configPath());
         $this->instance('path.public', $this->publicPath());
-        $this->instance('path.storage', $this->storagePath());
+        $this->instance('path.resources', $this->resourcesPath());
         $this->instance('path.database', $this->databasePath());
         $this->instance('path.bootstrap', $this->bootstrapPath());
+
+        $this->path = $this->instances;
     }
 
     /**
@@ -180,9 +182,9 @@ class Application extends Container
      *
      * @return string
      */
-    public function storagePath()
+    public function resourcesPath()
     {
-        return $this->storagePath ?: $this->basePath.DIRECTORY_SEPARATOR.'storage';
+        return $this->storagePath ?: $this->basePath.DIRECTORY_SEPARATOR.'resources';
     }
 
 }

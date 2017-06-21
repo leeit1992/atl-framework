@@ -57,6 +57,8 @@ class Route
     public function createFromGlobals(){
         global $app;
 
+        $route = $this;
+
         require_once $app->path() . '/Http/routes.php';
 
         $request = Request::createFromGlobals();
