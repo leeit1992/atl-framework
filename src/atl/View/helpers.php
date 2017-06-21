@@ -20,3 +20,18 @@ if (! function_exists('View')) {
     }
 }
 
+if (! function_exists('enqueueScripts')) {
+	/**
+	 * enqueue_scripts
+	 * Load script file.
+	 * 
+	 * @param  array $args  Args data script file.
+	 * @return string
+	 */
+    function enqueueScripts($args)
+    {
+        return Loader::getInstance()->enqueueScripts($args);
+    }
+}
+
+

@@ -8,6 +8,8 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 
+use Atl\Routing\UrlMatcher as AtlUrlMatcher;
+
 class Route
 {
 
@@ -68,6 +70,7 @@ class Route
         $context = new RequestContext();
         $context->fromRequest($request);
         $matcher = new UrlMatcher($this->routes, $context);
+
         $attributes = $matcher->match($request->getPathInfo());
         
         // Call function run controller.

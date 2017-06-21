@@ -6,6 +6,19 @@ class Loader
 {	
 
 	private static $getInstance;
+
+	/**
+	 * List register script
+	 * @var null
+	 */
+	public $registerScrips = null;
+
+	/**
+	 * List register style
+	 * @var null
+	 */
+	public $registerStyle = null;
+
 	
 	public static function getInstance(){
 		if (!(self::$getInstance instanceof self)) {
@@ -73,5 +86,69 @@ class Loader
 			}
 		}
 		return $vars;
+	}
+
+	/**
+	 * enqueue_scripts
+	 * Load script file.
+	 * 
+	 * @param  array $args  Args data script file.
+	 * @return string
+	 */
+	public function enqueueScripts( $args ){
+		$out = '';
+
+		foreach ($args as $key => $value) {
+			$out .= '<script id=' . $key . ' src="' . $value . '"></script>' . PHP_EOL;
+		}
+
+		if( $this->registerScrips ) {
+			foreach (self::$registerScrips as $key => $value) {
+				$out .= '<script id=' . $key . ' src="' . $value . '"></script>' . PHP_EOL;
+			}
+		}
+		echo $out;
+	}
+
+	/**
+	 * registerScrips
+	 * Register script before system load script.
+	 * 
+	 * @param  array $args  List script register
+	 * @return void
+	 */
+	public function registerScrips( $args ){
+		$this->registerScrips = $args;
+	}
+
+	/**
+	 * enqueue_style
+	 * Load style file.
+	 * 
+	 * @param  array $args  List data style file.
+	 * @return string
+	 */
+	public function enqueueStyle( $args ){
+		$out = '';
+		foreach ($args as $key => $value) {
+			$out .= '<link id=' . $key . ' href="' . $value . '" rel="stylesheet">'  . PHP_EOL;
+		}
+		if( $this->registerStyle ) {
+			foreach (self::$registerStyle as $key => $value) {
+				$out .= '<link id=' . $key . ' rel="stylesheet" type="text/css" href="' . $value . '">' . PHP_EOL;
+			}
+		}
+		echo $out;
+	}
+
+	/**
+	 * registerStyle
+	 * Register style before system load style.
+	 * 
+	 * @param  array $args  List style register
+	 * @return void
+	 */
+	public function registerStyle( $args ){
+		$this->registerStyle = $args;
 	}
 }

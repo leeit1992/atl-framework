@@ -188,7 +188,7 @@ class Application extends Container
     }
 
     public function configFile(){
-        return require_once $this->configPath() . '/app.php';
+        return require $this->configPath() . '/app.php';
     }
 
 }
