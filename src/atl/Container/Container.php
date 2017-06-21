@@ -27,4 +27,8 @@ class Container extends Pimple_Container
     	$this->instances[$abstract] = $instance;
     }
 
+    public function make($make, $parameters){
+        $this[$make] = $parameters;
+    }
+
 }

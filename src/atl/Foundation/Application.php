@@ -187,4 +187,8 @@ class Application extends Container
         return $this->storagePath ?: $this->basePath.DIRECTORY_SEPARATOR.'resources';
     }
 
+    public function configFile(){
+        return require_once $this->configPath() . '/app.php';
+    }
+
 }
