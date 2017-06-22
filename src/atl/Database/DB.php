@@ -11,7 +11,6 @@ class DB
         if (!(self::$getInstance instanceof self)) {
             self::$getInstance = new self();
         }
-
         return self::$getInstance;
     }
 
@@ -19,6 +18,11 @@ class DB
 		$this->connect = new Medoo($this->pathConfig());
 	}
 
+	/**
+	 * Get config database from project
+	 * 
+	 * @return array
+	 */
 	public function pathConfig(){
 		global $app;
 		return require_once $app->configPath() . '/database.php';
