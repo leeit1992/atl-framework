@@ -8,5 +8,6 @@ if (! function_exists('DB')) {
     function DB()
     {
         return DB::getInstance()->connect;
+        
     }
 }
