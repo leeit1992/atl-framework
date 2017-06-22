@@ -11,6 +11,7 @@ class DB
         if (!(self::$getInstance instanceof self)) {
             self::$getInstance = new self();
         }
+        
         return self::$getInstance;
     }
 
