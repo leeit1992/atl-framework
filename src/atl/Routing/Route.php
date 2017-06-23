@@ -22,11 +22,29 @@ class Route
     protected $routes;
 
     /**
+     * current route
+     * @var array
+     */
+    public $getRoute;
+
+    /**
      * The default values for the route.
      *
      * @var array
      */
     protected $routesList = [];
+
+    /**
+     * Auto-load in-accessible properties on demand.
+     *
+     * @param mixed $key
+     * @return mixed
+     */
+    public function __get( $key ) {
+        if ( in_array( $key, array( 'getRoute', 'getController', 'getMethod' ) ) ) {
+            return $this->$key();
+        }
+    }
 
 	private function __construct()
 	{
@@ -71,8 +89,8 @@ class Route
         $context->fromRequest($request);
         $matcher = new UrlMatcher($this->routes, $context);
 
-        $attributes = $matcher->match($request->getPathInfo());
-        
+        $this->getRoute = $attributes = $matcher->match($request->getPathInfo());
+
         // Call function run controller.
         call_user_func_array(
             'atlBeginAction', 
@@ -163,6 +181,38 @@ class Route
     public function getParameters( $args ){
         unset($args['_controller'], $args['_action'], $args['_route']);
         return $args;
+    }
+
+    /**
+     * Get info route current.
+     * 
+     * @return array
+     */
+    public function getRoute(){
+        return $this->getRoute;
+    }
+
+    /**
+     * Get name controller handle.
+     * 
+     * @return string
+     */
+    public function getController(){
+        return $this->getRoute['_controller'];
+    }
+
+    /**
+     * Get method of controller handle.
+     * 
+     * @return [type] [description]
+     */
+    public function getMethod(){
+
+        if( empty( $this->getRoute['_action'] ) ) {
+            return false;
+        }
+
+        return $this->getRoute['_action'];
     }
 }
 
