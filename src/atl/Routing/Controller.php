@@ -2,6 +2,7 @@
 
 namespace Atl\Routing;
 use Atl\Routing\Route;
+use Atl\Session\Session;
 
 class Controller
 {	
@@ -30,4 +31,14 @@ class Controller
 				break;
 		}
 	}
+
+	/**
+     * Handle session.
+     * 
+     * @return void
+     */
+	protected function session(){
+		return Session::getInstance()->session;
+	}
+
 }
