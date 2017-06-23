@@ -36,11 +36,21 @@ class Session{
 		}
 	}
 
+	/**
+	 * Load config of system.
+	 * 
+	 * @return array
+	 */
 	protected function loadConfig(){
 		global $app;
 		return require_once $app->configPath() . '/app.php';
 	}
 
+	/**
+	 * Get status of session
+	 * 
+	 * @return boole
+	 */
 	public function sessionStatus(){
 		$config = $this->loadConfig();
 
