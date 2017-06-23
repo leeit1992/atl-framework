@@ -5,8 +5,8 @@ use Atl\Routing\Route;
 
 class Controller
 {	
-	protected function __construct(){
-		
+	public function __construct(){
+
 	}
 
 	/**
