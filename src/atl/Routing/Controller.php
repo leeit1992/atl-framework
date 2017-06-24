@@ -3,9 +3,23 @@
 namespace Atl\Routing;
 use Atl\Routing\Route;
 use Atl\Session\Session;
+use Symfony\Component\HttpFoundation\Request;
 
 class Controller
 {	
+
+	/**
+     * Auto-load in-accessible properties on demand.
+     *
+     * @param mixed $key
+     * @return mixed
+     */
+    public function __get( $key ) {
+        if ( in_array( $key, array( 'request', 'session', 'getRoute' ) ) ) {
+            return $this->$key();
+        }
+    }
+
 	public function __construct(){
 
 	}
@@ -39,6 +53,10 @@ class Controller
      */
 	protected function session(){
 		return Session::getInstance()->session;
+	}
+
+	protected function request(){
+		return Request::createFromGlobals();
 	}
 
 }

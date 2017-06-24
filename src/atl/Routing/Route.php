@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Route as symRoute;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\HttpFoundation\Response;
 
 use Atl\Routing\UrlMatcher as AtlUrlMatcher;
 
