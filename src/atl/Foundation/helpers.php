@@ -18,6 +18,23 @@ if (! function_exists('url')) {
     }
 }
 
+if (! function_exists('assets')) {
+    
+    /**
+     * Get library from folder public.
+     * @param  string $path Path controller
+     * @return string       
+     */
+    function assets( $path )
+    {
+        global $app;
+        $config = $app->configFile();
+
+        return $config['url']['APP_URL'] . '/public/' . $path;
+    }
+}
+
+
 if (! function_exists('parametersExtra')) {
     
     function parametersExtra( $pairs, $atts )
