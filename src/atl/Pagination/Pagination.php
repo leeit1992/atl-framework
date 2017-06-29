@@ -72,7 +72,21 @@ class Pagination
 	 * 
 	 * @var string
 	 */
-	protected $classest;
+	protected $classes;
+
+	/**
+	 * The custom tag open current page.
+	 * 
+	 * @var string
+	 */
+	protected $tagOpenPageCurrent;
+
+	/**
+	 * The custom tag close current page.
+	 * 
+	 * @var string
+	 */
+	protected $tagClosePageCurrent;
 
 	public function __construct( $config = array() ){
 		$argsConfig = parametersExtra(
@@ -86,7 +100,9 @@ class Pagination
 				'tagClose' 	=> '</a>',
 				'nextLink' 	=> '&raquo;',
 				'prevLink' 	=> '&laquo;',
-				'classest' 	=> 'pagination pull-right',
+				'classes' 	=> 'pagination pull-right',
+				'tagOpenPageCurrent' => "<li class=\"active\">",
+				'tagClosePageCurrent' => '</li>',
 			), $config);
 		
 		foreach ($argsConfig  as $key => $value) {
@@ -153,7 +169,7 @@ class Pagination
 			}
 		}
 		
-		$output = "<ul class='" . $this->classest . "'>";
+		$output = "<ul class='" . $this->classes . "'>";
 		if($total_page > 1)
 		{
 			if($page > 1)
@@ -163,7 +179,7 @@ class Pagination
 			for ($i = $range['start']; $i <= $range['end']; $i++) 
 			{ 
 				if($page == $i){
-	 		 		 $output .=  "<li class=\"active\">".  $this->tagOpen . ($i) . $this->tagClose ."</li>";
+	 		 		 $output .=  $this->tagOpenPageCurrent .  $this->tagOpen . ($i) . $this->tagClose . $this->tagClosePageCurrent;
 	 		 	}else{
 	 		 			$output .= "<li><a href='". $this->baseUrl ."".$i."'>".$i."</a>";
 	 		 		}

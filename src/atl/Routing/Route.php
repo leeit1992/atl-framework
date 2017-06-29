@@ -2,7 +2,7 @@
 
 namespace Atl\Routing;
 
-use Symfony\Component\HttpFoundation\Request;
+use Atl\Foundation\Request;
 use Symfony\Component\Routing\Route as symRoute;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -42,7 +42,7 @@ class Route
      * @return mixed
      */
     public function __get( $key ) {
-        if ( in_array( $key, array( 'getRoute', 'getController', 'getMethod' ) ) ) {
+        if ( in_array( $key, array( 'getRoute', 'getController', 'getMethod', 'symfonyRequest' ) ) ) {
             return $this->$key();
         }
     }
@@ -215,5 +215,10 @@ class Route
 
         return $this->getRoute['_action'];
     }
+
+    public function getRequest(){
+        return Request::createFromGlobals();
+    }
+
 }
 

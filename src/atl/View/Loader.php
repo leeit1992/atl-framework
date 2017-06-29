@@ -58,6 +58,8 @@ class Loader
 
 		if( file_exists( $file ) ) {
 			include $file;
+		}else{
+			echo 'File not exists';
 		}
 	}
 
