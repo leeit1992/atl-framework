@@ -128,6 +128,18 @@ class Route
     }
 
     /**
+     * Add to list method PUT.
+     * 
+     * @param  string $rw         Link was rewrite 
+     * @param  String $handle     Controller handle for link.
+     * @param  array  $parameters Data send to method of controller.
+     * @return void
+     */
+    public function put( $rw, $handle, $parameters = array() ){
+        $this->routesList['PUT'][] = array( 'rw' => $rw, 'handle' => $handle, 'parameters' => $parameters );
+    }
+
+    /**
      * Check method for client to system.
      * 
      * @return void
@@ -141,6 +153,10 @@ class Route
 
             case 'POST':
                 $this->addRoute('POST');
+                break;
+
+            case 'PUT':
+                $this->addRoute('PUT');
                 break;
         }        
     }

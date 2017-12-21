@@ -79,4 +79,45 @@ if (! function_exists('Session')) {
     } 
 }
 
+if (! function_exists('pr')) {
+    /**
+     * Handle show array.
+     * 
+     * @return void
+     */
+    function pr( $args )
+    {   
+        echo "<pre>";
+        var_dump($args);
+        echo "</pre>";
+    } 
+}
+
+if (! function_exists('selected')) {
+    /**
+     * Handle selected form select
+     * 
+     * @return void
+     */
+    function selected( $data1, $data2 )
+    {   
+        if( $data1 == $data2 ) {
+            return 'selected';
+        }
+    } 
+}
+
+if (! function_exists('checked')) {
+    /**
+     * Handle checked form input check box
+     * 
+     * @return void
+     */
+    function checked( $data1, $data2 )
+    {   
+        if( $data1 == $data2 ) {
+            return 'checked';
+        }
+    } 
+}
 
