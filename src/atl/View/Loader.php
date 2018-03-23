@@ -101,12 +101,12 @@ class Loader
 		$out = '';
 
 		foreach ($args as $key => $value) {
-			$out .= '<script id=' . $key . ' src="' . $value . '"></script>' . PHP_EOL;
+			$out .= '<script id=' . $key . ' src="' . $value . '?id='.$this->makeId().'"></script>' . PHP_EOL;
 		}
 
 		if( $this->registerScrips ) {
 			foreach ($this->registerScrips as $key => $value) {
-				$out .= '<script id=' . $key . ' src="' . $value . '"></script>' . PHP_EOL;
+				$out .= '<script id=' . $key . ' src="' . $value . '?id='.$this->makeId().'"></script>' . PHP_EOL;
 			}
 		}
 		echo $out;
@@ -133,11 +133,11 @@ class Loader
 	public function enqueueStyle( $args ){
 		$out = '';
 		foreach ($args as $key => $value) {
-			$out .= '<link id=' . $key . ' href="' . $value . '" rel="stylesheet">'  . PHP_EOL;
+			$out .= '<link id=' . $key . ' href="' . $value . '?id='.$this->makeId().'" rel="stylesheet">'  . PHP_EOL;
 		}
 		if( $this->registerStyle ) {
 			foreach ($this->registerStyle as $key => $value) {
-				$out .= '<link id=' . $key . ' rel="stylesheet" type="text/css" href="' . $value . '">' . PHP_EOL;
+				$out .= '<link id=' . $key . ' rel="stylesheet" type="text/css" href="' . $value . '?id='.$this->makeId().'">' . PHP_EOL;
 			}
 		}
 		echo $out;
@@ -153,4 +153,12 @@ class Loader
 	public function registerStyle( $args ){
 		$this->registerStyle = $args;
 	}
+
+	/**
+     * Make id 
+     * @return string
+     */
+    public function makeId(){
+        return hexdec(substr(md5(uniqid()),0,8));
+    }
 }
